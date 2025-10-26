@@ -4,8 +4,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.dessertclicker.data.allWords
-
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 class GameViewModel : ViewModel() {
+    var userGuess by mutableStateOf("")
+        private set
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
     private lateinit var currentWord: String
@@ -19,6 +23,9 @@ class GameViewModel : ViewModel() {
             usedWords.add(currentWord)
             return shuffleCurrentWord(currentWord)
         }
+    }
+    fun updateUserGuess(guessedWord: String){
+        userGuess = guessedWord
     }
 
     private fun shuffleCurrentWord(word: String): String {
