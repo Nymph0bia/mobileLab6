@@ -81,7 +81,7 @@ fun GameScreen(
     ) {
 
         Text(
-            text = stringResource(R.string.app_name),
+            text = stringResource(R.string.app_name2),
             style = typography.titleLarge,
         )
         GameLayout(
